@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guilherme De Oliveira — AI Product Manager</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --border: #2a2d3e;
+      --accent: #6c8fff;
+      --accent2: #a78bfa;
+      --text: #e2e8f0;
+      --muted: #8892a4;
+      --tag-bg: #1e2235;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.7;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #0f1117 0%, #1a1d27 50%, #0f1117 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 40px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(108,143,255,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--tag-bg);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #e2e8f0, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 32px;
+    }
+
+    .hero-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-links a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .hero-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* LAYOUT */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 24px;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    @media (max-width: 720px) {
+      .container { grid-template-columns: 1fr; }
+      .sidebar { order: -1; }
+    }
+
+    /* SECTIONS */
+    section { margin-bottom: 52px; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ABOUT */
+    .about-text {
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .about-text p { margin-bottom: 12px; }
+
+    .highlight-list {
+      list-style: none;
+      margin-top: 16px;
+    }
+
+    .highlight-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.93rem;
+      display: flex;
+      gap: 10px;
+    }
+
+    .highlight-list li:last-child { border-bottom: none; }
+
+    .arrow { color: var(--accent); flex-shrink: 0; }
+
+    /* EXPERIENCE */
+    .job {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+      background: var(--surface);
+      transition: border-color 0.2s;
+    }
+
+    .job:hover { border-color: var(--accent); }
+
+    .job-header { margin-bottom: 12px; }
+
+    .job-company {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 4px;
+    }
+
+    .job-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .job-period {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .job-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .job-desc li {
+      margin-bottom: 6px;
+      list-style: none;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .job-desc li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* SIDEBAR */
+    .sidebar section { margin-bottom: 36px; }
+
+    .sidebar-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .sidebar-card + .sidebar-card { margin-top: 16px; }
+
+    /* TAGS */
+    .tag-group { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+
+    .tag {
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* EDUCATION */
+    .edu-item { margin-bottom: 14px; }
+
+    .edu-item:last-child { margin-bottom: 0; }
+
+    .edu-school {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .edu-course {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* LANGUAGES */
+    .lang-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .lang-item:last-child { border-bottom: none; }
+
+    .lang-level { color: var(--muted); font-size: 0.8rem; }
+
+    /* CERTS */
+    .cert-item {
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cert-item:last-child { border-bottom: none; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 32px;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="hero-badge">Open to opportunities</div>
+    <h1>Guilherme De Oliveira</h1>
+    <p class="hero-subtitle">AI Product Manager · Product Discovery · Data-Driven Decisions · Generative AI<br>São Paulo, Brasil</p>
+    <div class="hero-links">
+      <a href="mailto:g.deoliveira333@gmail.com">
+        ✉ g.deoliveira333@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/guilhermedeoliveira33" target="_blank">
+        in LinkedIn
+      </a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- MAIN COLUMN -->
+    <main>
+
+      <section>
+        <div class="section-label">Sobre</div>
+        <div class="about-text">
+          <p>Nos últimos 6 anos, construí produtos digitais do zero em e-commerce, programas de fidelidade, plataformas de chatbot e jornadas de autosserviço. Minha atuação combina product discovery rigoroso, decisões orientadas por dados e colaboração cross-functional com times de UX, Engenharia e Ciência de Dados.</p>
+          <ul class="highlight-list">
+            <li><span class="arrow">→</span> Experiência prática com IA generativa aplicada a produtos reais em produção</li>
+            <li><span class="arrow">→</span> Capacidade de traduzir complexidade técnica em valor tangível para o negócio</li>
+            <li><span class="arrow">→</span> Fluência nativa em inglês e vivência internacional</li>
+            <li><span class="arrow">→</span> Temas que me movem: IA conversacional, automação inteligente, product-led growth</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-label">Experiência</div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-company">Itaú Unibanco</div>
+            <div class="job-title">Senior AI Product Manager</div>
+            <div class="job-period">nov 2025 – presente · São Paulo</div>
+          </div>
+          <ul class="job-desc">
+            <li>Modernização das jornadas de atendimento digital, migrando fluxos roteirizados para IA conversacional com foco em naturalidade e resolução eficiente.</li>
+            <li>Defino estratégia de produto para jornadas conversacionais, priorizando casos de uso de alto impacto para o cliente e para o negócio.</li>
+            <li>Atuo em product discovery para identificar oportunidades de automação inteligente e redução de fricção.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-company">Itaú Unibanco</div>
+            <div class="job-title">Senior Product Manager — Plataforma de Chatbots</div>
+            <div class="job-period">out 2024 – nov 2025 · São Paulo</div>
+          </div>
+          <ul class="job-desc">
+            <li>Liderei estratégia e governança de plataforma de criação e gestão de chatbots com IA generativa, gerando eficiência operacional e escala sustentável.</li>
+            <li>Defini visão de produto, roadmap e KPIs, alinhando objetivos corporativos à melhoria da experiência do usuário.</li>
+            <li>Gerenciei stakeholders executivos e técnicos, priorizando backlog por impacto financeiro e viabilidade técnica.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-company">VR</div>
+            <div class="job-title">Senior Product Manager — Fidelidade & Pontos PJ</div>
+            <div class="job-period">mai 2023 – out 2024 · Brasil</div>
+          </div>
+          <ul class="job-desc">
+            <li>Liderou OKRs, discovery e validação de funcionalidades de programa de pontos para clientes PJ.</li>
+            <li>Estruturou mecânicas de acúmulo, resgate e regras de negócio equilibrando atratividade e sustentabilidade financeira.</li>
+            <li>Atuou em parceria com UX e Engenharia, acelerando prototipagem e testes de usabilidade.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-company">VR</div>
+            <div class="job-title">Senior Product Analyst</div>
+            <div class="job-period">mai 2022 – mai 2023 · São Paulo</div>
+          </div>
+          <ul class="job-desc">
+            <li>Estruturei user stories, critérios de aceite e regras de negócio, aumentando eficiência de Engenharia e UX.</li>
+            <li>Organizei e mantive backlog operacional, garantindo priorização e execução dentro dos prazos.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-company">Wellcome App</div>
+            <div class="job-title">Product Manager</div>
+            <div class="job-period">dez 2021 – ago 2022 · Brasil</div>
+          </div>
+          <ul class="job-desc">
+            <li>Conduzi pesquisas de mercado, testes A/B e análises de jornada do usuário para aumentar engajamento.</li>
+            <li>Defini OKRs e métricas de produto focadas em escalabilidade e retenção de usuários.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-company">Fortify Transformation</div>
+            <div class="job-title">Product Manager E-commerce</div>
+            <div class="job-period">mar 2020 – dez 2021 · São Paulo</div>
+          </div>
+          <ul class="job-desc">
+            <li>Estruturei e acompanhei evolução de produtos digitais (e-commerce, marketplace e chatbot) do zero.</li>
+            <li>Executei ações de growth hacking e coletei métricas de performance para decisões baseadas em dados.</li>
+          </ul>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <section>
+        <div class="section-label">Skills</div>
+        <div class="sidebar-card">
+          <div class="tag-group">
+            <span class="tag">Product Discovery</span>
+            <span class="tag">IA Generativa</span>
+            <span class="tag">Data-Driven</span>
+            <span class="tag">OKRs</span>
+            <span class="tag">Roadmap</span>
+            <span class="tag">Backlog</span>
+            <span class="tag">User Stories</span>
+            <span class="tag">A/B Testing</span>
+            <span class="tag">Scrum</span>
+            <span class="tag">Kanban</span>
+            <span class="tag">Stakeholder Mgmt</span>
+            <span class="tag">StackSpot</span>
+            <span class="tag">Chatbot</span>
+            <span class="tag">PLG</span>
+            <span class="tag">Growth Hacking</span>
+            <span class="tag">Story Mapping</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-label">Formação</div>
+        <div class="sidebar-card">
+          <div class="edu-item">
+            <div class="edu-school">FIAP</div>
+            <div class="edu-course">Pós-graduação · IA para Negócios — Gestão Estratégica e Liderança · 2026</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-school">Canterbury Technical Institute</div>
+            <div class="edu-course">Bachelor's · Business Administration · 2012–2014</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-school">Impacta Tecnologia</div>
+            <div class="edu-course">Product Owner · 2024</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-school">Awari</div>
+            <div class="edu-course">Product Management · 2022</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-label">Idiomas</div>
+        <div class="sidebar-card">
+          <div class="lang-item"><span>Português</span><span class="lang-level">Nativo</span></div>
+          <div class="lang-item"><span>English</span><span class="lang-level">Nativo / Bilíngue</span></div>
+          <div class="lang-item"><span>Espanhol</span><span class="lang-level">Intermediário</span></div>
+          <div class="lang-item"><span>Alemão</span><span class="lang-level">Básico</span></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-label">Certificações</div>
+        <div class="sidebar-card">
+          <div class="cert-item">Produtividade com IA Generativa</div>
+          <div class="cert-item">Intensivo de Product Management</div>
+          <div class="cert-item">Discover</div>
+          <div class="cert-item">Product Owner</div>
+        </div>
+      </section>
+
+    </aside>
+
+  </div>
+
+  <footer>
+    Guilherme De Oliveira · São Paulo, Brasil · g.deoliveira333@gmail.com
+  </footer>
+
+</body>
+</html>
