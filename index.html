@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Guilherme De Oliveira — AI Product Manager</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     :root {
       --bg: #0f1117;
@@ -38,10 +43,12 @@
     .hero::before {
       content: '';
       position: absolute;
-      top: -100px; left: 50%;
+      top: -100px;
+      left: 50%;
       transform: translateX(-50%);
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(108,143,255,0.08) 0%, transparent 70%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(108, 143, 255, 0.08) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -114,12 +121,19 @@
     }
 
     @media (max-width: 720px) {
-      .container { grid-template-columns: 1fr; }
-      .sidebar { order: -1; }
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        order: -1;
+      }
     }
 
     /* SECTIONS */
-    section { margin-bottom: 52px; }
+    section {
+      margin-bottom: 52px;
+    }
 
     .section-label {
       font-size: 11px;
@@ -146,7 +160,9 @@
       font-size: 0.97rem;
     }
 
-    .about-text p { margin-bottom: 12px; }
+    .about-text p {
+      margin-bottom: 12px;
+    }
 
     .highlight-list {
       list-style: none;
@@ -162,9 +178,14 @@
       gap: 10px;
     }
 
-    .highlight-list li:last-child { border-bottom: none; }
+    .highlight-list li:last-child {
+      border-bottom: none;
+    }
 
-    .arrow { color: var(--accent); flex-shrink: 0; }
+    .arrow {
+      color: var(--accent);
+      flex-shrink: 0;
+    }
 
     /* EXPERIENCE */
     .job {
@@ -176,9 +197,13 @@
       transition: border-color 0.2s;
     }
 
-    .job:hover { border-color: var(--accent); }
+    .job:hover {
+      border-color: var(--accent);
+    }
 
-    .job-header { margin-bottom: 12px; }
+    .job-header {
+      margin-bottom: 12px;
+    }
 
     .job-company {
       font-size: 12px;
@@ -223,7 +248,9 @@
     }
 
     /* SIDEBAR */
-    .sidebar section { margin-bottom: 36px; }
+    .sidebar section {
+      margin-bottom: 36px;
+    }
 
     .sidebar-card {
       background: var(--surface);
@@ -232,10 +259,17 @@
       padding: 20px;
     }
 
-    .sidebar-card + .sidebar-card { margin-top: 16px; }
+    .sidebar-card+.sidebar-card {
+      margin-top: 16px;
+    }
 
     /* TAGS */
-    .tag-group { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .tag-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
 
     .tag {
       background: var(--tag-bg);
@@ -247,9 +281,13 @@
     }
 
     /* EDUCATION */
-    .edu-item { margin-bottom: 14px; }
+    .edu-item {
+      margin-bottom: 14px;
+    }
 
-    .edu-item:last-child { margin-bottom: 0; }
+    .edu-item:last-child {
+      margin-bottom: 0;
+    }
 
     .edu-school {
       font-size: 0.88rem;
@@ -271,9 +309,14 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .lang-item:last-child { border-bottom: none; }
+    .lang-item:last-child {
+      border-bottom: none;
+    }
 
-    .lang-level { color: var(--muted); font-size: 0.8rem; }
+    .lang-level {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
 
     /* CERTS */
     .cert-item {
@@ -283,7 +326,9 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .cert-item:last-child { border-bottom: none; }
+    .cert-item:last-child {
+      border-bottom: none;
+    }
 
     /* FOOTER */
     footer {
@@ -295,18 +340,22 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="hero">
-    <div class="hero-badge">Open to opportunities</div>
     <h1>Guilherme De Oliveira</h1>
-    <p class="hero-subtitle">AI Product Manager · Product Discovery · Data-Driven Decisions · Generative AI<br>São Paulo, Brasil</p>
+    <p class="hero-subtitle">AI Product Manager · Product Discovery · Data-Driven Decisions · Generative AI<br>São
+      Paulo, Brasil</p>
     <div class="hero-links">
       <a href="mailto:g.deoliveira333@gmail.com">
         ✉ g.deoliveira333@gmail.com
       </a>
       <a href="https://www.linkedin.com/in/guilhermedeoliveira33" target="_blank">
-        in LinkedIn
+        LinkedIn
+      </a>
+      <a href="https://api.whatsapp.com/send/?phone=5511966451983" target="_blank">
+        Whatsapp
       </a>
     </div>
   </div>
@@ -319,12 +368,18 @@
       <section>
         <div class="section-label">Sobre</div>
         <div class="about-text">
-          <p>Nos últimos 6 anos, construí produtos digitais do zero em e-commerce, programas de fidelidade, plataformas de chatbot e jornadas de autosserviço. Minha atuação combina product discovery rigoroso, decisões orientadas por dados e colaboração cross-functional com times de UX, Engenharia e Ciência de Dados.</p>
+          <p>Nos últimos 6 anos, construí produtos digitais do zero em e-commerce, programas de fidelidade, plataformas
+            de chatbot e jornadas de autosserviço. Minha atuação combina product discovery detalhados, decisões
+            orientadas
+            por dados e colaboração cross-functional com times de UX, Engenharia e Ciência de Dados.</p>
           <ul class="highlight-list">
-            <li><span class="arrow">→</span> Experiência prática com IA generativa aplicada a produtos reais em produção</li>
-            <li><span class="arrow">→</span> Capacidade de traduzir complexidade técnica em valor tangível para o negócio</li>
+            <li><span class="arrow">→</span> Experiência prática com IA generativa aplicada a produtos reais em produção
+            </li>
+            <li><span class="arrow">→</span> Capacidade de traduzir complexidade técnica em valor tangível para o
+              negócio</li>
             <li><span class="arrow">→</span> Fluência nativa em inglês e vivência internacional</li>
-            <li><span class="arrow">→</span> Temas que me movem: IA conversacional, automação inteligente, product-led growth</li>
+            <li><span class="arrow">→</span> Temas que me movem: IA conversacional, automação inteligente, product-led
+              growth</li>
           </ul>
         </div>
       </section>
@@ -339,9 +394,12 @@
             <div class="job-period">nov 2025 – presente · São Paulo</div>
           </div>
           <ul class="job-desc">
-            <li>Modernização das jornadas de atendimento digital, migrando fluxos roteirizados para IA conversacional com foco em naturalidade e resolução eficiente.</li>
-            <li>Defino estratégia de produto para jornadas conversacionais, priorizando casos de uso de alto impacto para o cliente e para o negócio.</li>
-            <li>Atuo em product discovery para identificar oportunidades de automação inteligente e redução de fricção.</li>
+            <li>Responsável pela modernização das jornadas de atendimento digital, liderando a migração de fluxos roteirizados para experiências de IA conversacional, com foco em naturalidade, contexto e resolução eficiente.</li>
+            <li>Defino e conduzo a estratégia de produto para jornadas conversacionais, priorizando casos de uso de alto impacto para o cliente e para o negócio.</li>
+            <li>Atuo fortemente em product discovery, identificando oportunidades de automação inteligente, redução de fricção e melhoria da experiência do usuário.</li>
+            <li>Trabalho de forma cross-functional com UX, Engenharia, Dados e IA, cocriando soluções que aumentam a taxa de resolução automática, reduzem o esforço do cliente e elevam a qualidade do atendimento digital.</li>
+            <li>Priorizo backlog com base em valor de negócio, impacto na jornada do cliente e viabilidade técnica, orientando decisões por dados e aprendizado contínuo.</li>
+            <li>Monitoro métricas de performance de jornada — resolução, satisfação, eficiência e adoção — promovendo ciclos constantes de melhoria.</li>
           </ul>
         </div>
 
@@ -352,9 +410,11 @@
             <div class="job-period">out 2024 – nov 2025 · São Paulo</div>
           </div>
           <ul class="job-desc">
-            <li>Liderei estratégia e governança de plataforma de criação e gestão de chatbots com IA generativa, gerando eficiência operacional e escala sustentável.</li>
-            <li>Defini visão de produto, roadmap e KPIs, alinhando objetivos corporativos à melhoria da experiência do usuário.</li>
-            <li>Gerenciei stakeholders executivos e técnicos, priorizando backlog por impacto financeiro e viabilidade técnica.</li>
+            <li>Liderei a estratégia e governança de uma plataforma de criação e gestão de chatbots para atendimento digital com IA generativa, resultando em aumento de eficiência operacional e escala sustentável.</li>
+            <li>Defini visão de produto, roadmap estratégico e KPIs, alinhando objetivos corporativos à melhoria da experiência do usuário e contribuindo para redução de custos operacionais.</li>
+            <li>Atuei de forma cross-functional com UX, Engenharia e Dados, liderando discovery e delivery de soluções que reduziram o tempo médio de atendimento e aumentaram a taxa de resolução automática.</li>
+            <li>Gerenciei stakeholders executivos e técnicos, priorizando backlog com base em impacto financeiro, valor para o usuário e viabilidade técnica, acelerando entregas críticas para o negócio.</li>
+            <li>Implementei decisões orientadas a dados, acompanhando métricas de adoção, performance e eficiência, promovendo evolução contínua da plataforma.</li>
           </ul>
         </div>
 
@@ -365,9 +425,12 @@
             <div class="job-period">mai 2023 – out 2024 · Brasil</div>
           </div>
           <ul class="job-desc">
-            <li>Liderou OKRs, discovery e validação de funcionalidades de programa de pontos para clientes PJ.</li>
-            <li>Estruturou mecânicas de acúmulo, resgate e regras de negócio equilibrando atratividade e sustentabilidade financeira.</li>
-            <li>Atuou em parceria com UX e Engenharia, acelerando prototipagem e testes de usabilidade.</li>
+            <li>Liderou OKRs, discovery e validação de funcionalidades de um programa de pontos e fidelidade para clientes PJ, garantindo aderência às necessidades reais de empresas, parceiros e times comerciais.</li>
+            <li>Estruturou e evoluiu mecânicas de acúmulo, resgate e regras de negócio, equilibrando atratividade para o cliente, viabilidade operacional e sustentabilidade financeira do programa.</li>
+            <li>Reduziu retrabalho e ambiguidades de escopo por meio da definição de user stories claras, critérios de aceite e story mapping, aumentando a previsibilidade das entregas e a velocidade do time.</li>
+            <li>Otimizou processos e fluxos internos da squad, melhorando a eficiência operacional, reduzindo tempo de ciclo e acelerando o time-to-market de novas features.</li>
+            <li>Gerenciou backlog e stakeholders de negócio (comercial, marketing, operações e parceiros), garantindo alinhamento estratégico e clareza de prioridades.</li>
+            <li>Atuou em parceria direta com UX e Engenharia, acelerando prototipagem e testes de usabilidade, elevando a adesão ao programa e melhorando a experiência do usuário PJ.</li>
           </ul>
         </div>
 
@@ -378,8 +441,11 @@
             <div class="job-period">mai 2022 – mai 2023 · São Paulo</div>
           </div>
           <ul class="job-desc">
-            <li>Estruturei user stories, critérios de aceite e regras de negócio, aumentando eficiência de Engenharia e UX.</li>
-            <li>Organizei e mantive backlog operacional, garantindo priorização e execução dentro dos prazos.</li>
+            <li>Implementei processos e fluxos internos, tornando o backlog e as demandas mais claros e previsíveis para a squad.</li>
+            <li>Estruturei user stories, critérios de aceite e regras de negócio, permitindo que Engenharia e UX trabalhassem de forma mais eficiente e reduzindo retrabalho.</li>
+            <li>Organizei e mantive o backlog operacional, garantindo que todas as tarefas fossem acompanhadas, priorizadas e executadas dentro dos prazos.</li>
+            <li>Acompanhei entregas e validações de funcionalidades, registrando problemas, inconsistências e oportunidades de melhoria no produto.</li>
+            <li>Apoiei UX e Engenharia em prototipagem, testes e ajustes, garantindo que o produto funcionasse corretamente e estivesse alinhado às necessidades dos clientes PJ.</li>
           </ul>
         </div>
 
@@ -390,8 +456,10 @@
             <div class="job-period">dez 2021 – ago 2022 · Brasil</div>
           </div>
           <ul class="job-desc">
-            <li>Conduzi pesquisas de mercado, testes A/B e análises de jornada do usuário para aumentar engajamento.</li>
-            <li>Defini OKRs e métricas de produto focadas em escalabilidade e retenção de usuários.</li>
+            <li>Conduzi pesquisas de mercado, testes A/B e análises de jornada do usuário, aplicando insights para aumentar engajamento e melhorar a experiência do cliente.</li>
+            <li>Validei hipóteses de produto e priorizei backlog, garantindo que o time focasse em iniciativas de maior valor e impacto estratégico.</li>
+            <li>Atuei em lançamentos e estratégias de inbound marketing, implementando ações que contribuíram para crescimento orgânico e aquisição de novos usuários.</li>
+            <li>Defini OKRs e métricas de produto focadas em escalabilidade e retenção de usuários, monitorando resultados e ajustando iniciativas para maximizar impacto.</li>
           </ul>
         </div>
 
@@ -402,8 +470,26 @@
             <div class="job-period">mar 2020 – dez 2021 · São Paulo</div>
           </div>
           <ul class="job-desc">
-            <li>Estruturei e acompanhei evolução de produtos digitais (e-commerce, marketplace e chatbot) do zero.</li>
-            <li>Executei ações de growth hacking e coletei métricas de performance para decisões baseadas em dados.</li>
+            <li>Estruturou e acompanhou a evolução de produtos digitais (e-commerce, marketplace e chatbot), implementando processos e fluxos que permitiram lançamentos consistentes do zero.</li>
+            <li>Executou ações de aquisição e growth hacking, testando canais e campanhas que ampliaram a base de clientes e engajamento.</li>
+            <li>Coletou e analisou métricas de performance, monitorando KPIs de uso, conversão e engajamento, apoiando decisões baseadas em dados reais.</li>
+            <li>Conduziu pesquisas de mercado e entrevistas com clientes, identificando pontos de atrito e oportunidades de melhoria, resultando em experiências mais intuitivas e eficientes.</li>
+            <li>Colaborou diretamente com UX, Engenharia e Marketing, implementando melhorias rápidas e testes contínuos que aumentaram a satisfação do usuário e a eficiência operacional.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-company">Fortify Transformation</div>
+            <div class="job-title">Coordenador de Experiência do Cliente</div>
+            <div class="job-period">set 2019 – mar 2020 · São Paulo</div>
+          </div>
+          <ul class="job-desc">
+            <li>Estruturou e criou processos operacionais e métodos para pós-venda e customer success, garantindo eficiência operacional e maior satisfação do cliente.</li>
+            <li>Manteve relacionamento direto com clientes, incluindo contatos e visitas para avaliação da qualidade dos serviços, promovendo atendimento personalizado e proativo.</li>
+            <li>Acompanhou reclamações, dúvidas e feedbacks, identificando problemas recorrentes e implementando ações de melhoria contínua.</li>
+            <li>Desenvolveu métricas de satisfação do cliente e criou guias e interfaces nos canais de atendimento e FAQ, aumentando a autonomia do cliente e reduzindo demandas repetitivas.</li>
+            <li>Implementou atendimento automatizado via chatbot, otimizando tempo de resposta e eficiência do suporte.</li>
           </ul>
         </div>
 
@@ -429,9 +515,9 @@
             <span class="tag">Scrum</span>
             <span class="tag">Kanban</span>
             <span class="tag">Stakeholder Mgmt</span>
-            <span class="tag">StackSpot</span>
+            <span class="tag">Claude Code</span>
             <span class="tag">Chatbot</span>
-            <span class="tag">PLG</span>
+            <span class="tag">PRD</span>
             <span class="tag">Growth Hacking</span>
             <span class="tag">Story Mapping</span>
           </div>
@@ -466,7 +552,6 @@
           <div class="lang-item"><span>Português</span><span class="lang-level">Nativo</span></div>
           <div class="lang-item"><span>English</span><span class="lang-level">Nativo / Bilíngue</span></div>
           <div class="lang-item"><span>Espanhol</span><span class="lang-level">Intermediário</span></div>
-          <div class="lang-item"><span>Alemão</span><span class="lang-level">Básico</span></div>
         </div>
       </section>
 
@@ -489,4 +574,5 @@
   </footer>
 
 </body>
+
 </html>
