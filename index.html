@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guilherme De Oliveira — AI Product Manager</title>
+  <title>Guilherme De Oliveira — Product Manager</title>
   <style>
     * {
       margin: 0;
@@ -15,9 +15,11 @@
     :root {
       --bg: #0f1117;
       --surface: #1a1d27;
+      --surface2: #21253a;
       --border: #2a2d3e;
       --accent: #6c8fff;
       --accent2: #a78bfa;
+      --accent-warm: #f59e0b;
       --text: #e2e8f0;
       --muted: #8892a4;
       --tag-bg: #1e2235;
@@ -30,26 +32,90 @@
       line-height: 1.7;
     }
 
-    /* HERO */
-    .hero {
-      background: linear-gradient(135deg, #0f1117 0%, #1a1d27 50%, #0f1117 100%);
-      border-bottom: 1px solid var(--border);
-      padding: 80px 40px 60px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -100px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(108, 143, 255, 0.08) 0%, transparent 70%);
-      pointer-events: none;
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15, 17, 23, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #fff !important;
+      padding: 7px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover {
+      opacity: 0.85;
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 24px 72px;
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 48px;
+      align-items: center;
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-photo {
+        order: -1;
+        margin: 0 auto;
+      }
     }
 
     .hero-badge {
@@ -57,82 +123,143 @@
       background: var(--tag-bg);
       border: 1px solid var(--accent);
       color: var(--accent);
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 11px;
+      font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      padding: 4px 14px;
+      padding: 4px 12px;
       border-radius: 20px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 700;
       letter-spacing: -0.5px;
-      margin-bottom: 12px;
-      background: linear-gradient(135deg, #e2e8f0, #a78bfa);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #6c8fff, #a78bfa);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    .hero-subtitle {
+    .hero-desc {
       color: var(--muted);
-      font-size: 1.05rem;
+      font-size: 1rem;
       margin-bottom: 32px;
+      max-width: 480px;
     }
 
-    .hero-links {
+    .hero-btns {
       display: flex;
-      justify-content: center;
-      gap: 16px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
-    .hero-links a {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.85;
+    }
+
+    .btn-secondary {
       background: var(--surface);
       border: 1px solid var(--border);
       color: var(--text);
-      text-decoration: none;
-      padding: 8px 20px;
+      padding: 10px 24px;
       border-radius: 8px;
+      font-weight: 600;
       font-size: 14px;
-      transition: border-color 0.2s, color 0.2s;
+      transition: border-color 0.2s;
     }
 
-    .hero-links a:hover {
+    .btn-secondary:hover {
       border-color: var(--accent);
-      color: var(--accent);
     }
 
-    /* LAYOUT */
-    .container {
-      max-width: 900px;
+    /* PHOTO */
+    .hero-photo {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      flex-shrink: 0;
+    }
+
+    /* MÉTRICAS */
+    .metrics {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 36px 24px;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      background: var(--surface);
+    }
+
+    .metric {
+      flex: 1;
+      text-align: center;
+      padding: 0 24px;
+      border-right: 1px solid var(--border);
+      max-width: 200px;
+    }
+
+    .metric:last-child {
+      border-right: none;
+    }
+
+    .metric-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #6c8fff, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .metric-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    @media (max-width: 640px) {
+      .metrics {
+        flex-wrap: wrap;
+        gap: 24px;
+        padding: 24px;
+      }
+
+      .metric {
+        border-right: none;
+        min-width: 40%;
+      }
+    }
+
+    /* ─── SECTION BASE ─── */
+    .section {
+      max-width: 860px;
       margin: 0 auto;
-      padding: 60px 24px;
-      display: grid;
-      grid-template-columns: 1fr 280px;
-      gap: 48px;
-      align-items: start;
-    }
-
-    @media (max-width: 720px) {
-      .container {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        order: -1;
-      }
-    }
-
-    /* SECTIONS */
-    section {
-      margin-bottom: 52px;
+      padding: 72px 24px;
     }
 
     .section-label {
@@ -141,44 +268,362 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 20px;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 40px;
+    }
+
+    /* ─── PRODUTOS ─── */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .product-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+
+    .product-card:hover {
+      border-color: var(--accent);
+    }
+
+    .product-company {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 6px;
+    }
+
+    .product-name {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .product-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .product-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 5px;
+    }
+
+    /* ─── CASES ─── */
+    .cases-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .case-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 28px;
+      transition: border-color 0.2s;
     }
 
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
+    .case-card:hover {
+      border-color: var(--accent);
     }
 
-    /* ABOUT */
-    .about-text {
+    .case-metric {
+      font-size: 1.2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #6c8fff, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      white-space: nowrap;
+      min-width: 80px;
+    }
+
+    .case-company {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 4px;
+    }
+
+    .case-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .case-desc {
+      font-size: 0.85rem;
       color: var(--muted);
-      font-size: 0.97rem;
     }
 
-    .about-text p {
+    @media (max-width: 640px) {
+      .case-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+    }
+
+    /* ─── DEPOIMENTOS ─── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 720px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .testimonial-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .testimonial-text {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .testimonial-role {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ─── ARSENAL ─── */
+    .arsenal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .arsenal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .arsenal-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .arsenal-icon {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .arsenal-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .arsenal-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .arsenal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .arsenal-highlight {
+      background: linear-gradient(135deg, #1a1d27, #21253a);
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      padding: 28px;
+    }
+
+    .arsenal-highlight-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
       margin-bottom: 12px;
     }
 
-    .highlight-list {
-      list-style: none;
-      margin-top: 16px;
+    .arsenal-highlight-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
     }
 
-    .highlight-list li {
+    .arsenal-highlight-text {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* ─── CONTEÚDOS ─── */
+    .contents-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contents-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 720px) {
+      .contents-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 400px) {
+      .contents-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .content-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: border-color 0.2s;
+    }
+
+    .content-card:hover {
+      border-color: var(--accent);
+    }
+
+    .content-icon {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .content-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .content-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .contents-cta {
+      text-align: center;
+    }
+
+    /* ─── SOBRE ─── */
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    @media (max-width: 640px) {
+      .sobre-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sobre-photo {
+        margin: 0 auto;
+      }
+    }
+
+    .sobre-photo {
+      width: 200px;
+      height: 200px;
+      border-radius: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 56px;
+      flex-shrink: 0;
+    }
+
+    .sobre-text p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+
+    .sobre-list {
+      list-style: none;
+      margin-top: 20px;
+    }
+
+    .sobre-list li {
       padding: 8px 0;
       border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
       color: var(--muted);
-      font-size: 0.93rem;
       display: flex;
       gap: 10px;
     }
 
-    .highlight-list li:last-child {
+    .sobre-list li:last-child {
       border-bottom: none;
     }
 
@@ -187,153 +632,89 @@
       flex-shrink: 0;
     }
 
-    /* EXPERIENCE */
-    .job {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 16px;
-      background: var(--surface);
-      transition: border-color 0.2s;
+    /* ─── CTA FINAL ─── */
+    .cta-final {
+      background: linear-gradient(135deg, #1a1d27 0%, #21253a 100%);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 80px 24px;
     }
 
-    .job:hover {
-      border-color: var(--accent);
-    }
-
-    .job-header {
+    .cta-final h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
       margin-bottom: 12px;
     }
 
-    .job-company {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--accent2);
-      margin-bottom: 4px;
-    }
-
-    .job-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-
-    .job-period {
-      font-size: 12px;
+    .cta-final p {
       color: var(--muted);
-    }
-
-    .job-desc {
-      font-size: 0.88rem;
-      color: var(--muted);
-      margin-top: 10px;
-    }
-
-    .job-desc li {
-      margin-bottom: 6px;
-      list-style: none;
-      padding-left: 14px;
-      position: relative;
-    }
-
-    .job-desc li::before {
-      content: '·';
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    /* SIDEBAR */
-    .sidebar section {
       margin-bottom: 36px;
+      font-size: 0.95rem;
     }
 
-    .sidebar-card {
+    .cta-btns {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-linkedin {
+      background: #0a66c2;
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-linkedin:hover {
+      opacity: 0.85;
+    }
+
+    .btn-email {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
-    }
-
-    .sidebar-card+.sidebar-card {
-      margin-top: 16px;
-    }
-
-    /* TAGS */
-    .tag-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    .tag {
-      background: var(--tag-bg);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 12px;
-      padding: 4px 10px;
-      border-radius: 6px;
-    }
-
-    /* EDUCATION */
-    .edu-item {
-      margin-bottom: 14px;
-    }
-
-    .edu-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .edu-school {
-      font-size: 0.88rem;
-      font-weight: 600;
       color: var(--text);
-    }
-
-    .edu-course {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    /* LANGUAGES */
-    .lang-item {
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
       display: flex;
-      justify-content: space-between;
-      font-size: 0.88rem;
-      padding: 6px 0;
-      border-bottom: 1px solid var(--border);
+      align-items: center;
+      gap: 8px;
+      transition: border-color 0.2s;
     }
 
-    .lang-item:last-child {
-      border-bottom: none;
+    .btn-email:hover {
+      border-color: var(--accent);
     }
 
-    .lang-level {
-      color: var(--muted);
-      font-size: 0.8rem;
+    .btn-whatsapp {
+      background: #25d366;
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s;
     }
 
-    /* CERTS */
-    .cert-item {
-      font-size: 0.85rem;
-      color: var(--muted);
-      padding: 6px 0;
-      border-bottom: 1px solid var(--border);
+    .btn-whatsapp:hover {
+      opacity: 0.85;
     }
 
-    .cert-item:last-child {
-      border-bottom: none;
-    }
-
-    /* FOOTER */
+    /* ─── FOOTER ─── */
     footer {
       text-align: center;
-      padding: 32px;
+      padding: 24px;
       font-size: 12px;
       color: var(--muted);
       border-top: 1px solid var(--border);
@@ -343,230 +724,352 @@
 
 <body>
 
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">GO</span>
+    <ul class="nav-links">
+      <li><a href="#produtos">Produtos</a></li>
+      <li><a href="#cases">Cases</a></li>
+      <li><a href="#arsenal">Arsenal</a></li>
+      <li><a href="#conteudos">Conteúdos</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="https://api.whatsapp.com/send/?phone=5511966451983" target="_blank" class="nav-cta">Falar comigo</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
   <div class="hero">
-    <h1>Guilherme De Oliveira</h1>
-    <p class="hero-subtitle">AI Product Manager · Product Discovery · Data-Driven Decisions · Generative AI<br>São
-      Paulo, Brasil</p>
-    <div class="hero-links">
-      <a href="mailto:g.deoliveira333@gmail.com">
-        ✉ g.deoliveira333@gmail.com
-      </a>
-      <a href="https://www.linkedin.com/in/guilhermedeoliveira33" target="_blank">
-        LinkedIn
-      </a>
-      <a href="https://api.whatsapp.com/send/?phone=5511966451983" target="_blank">
-        Whatsapp
-      </a>
+    <div class="hero-content">
+      <span class="hero-badge">Product Manager</span>
+      <h1>Oiii, sou o <span>Guilherme.</span></h1>
+      <p class="hero-desc">
+        Product Manager com 6 anos construindo produtos digitais. Hoje focado em IA conversacional no maior banco
+        digital da América Latina — sempre transformando problemas reais em experiências inteligentes.
+      </p>
+      <div class="hero-btns">
+        <a href="#produtos" class="btn-primary">Ver produtos</a>
+        <a href="https://api.whatsapp.com/send/?phone=5511966451983" target="_blank" class="btn-secondary">Falar
+          comigo</a>
+      </div>
+    </div>
+    <div class="hero-photo">👨‍💻</div>
+  </div>
+
+  <!-- MÉTRICAS -->
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-value">6+</div>
+      <div class="metric-label">Anos em Produto</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">5</div>
+      <div class="metric-label">Produtos Lançados</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">1</div>
+      <div class="metric-label">Produto com IA Generativa</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">EN</div>
+      <div class="metric-label">Bilíngue Avançado</div>
     </div>
   </div>
 
-  <div class="container">
+  <!-- PRODUTOS -->
+  <div class="section" id="produtos">
+    <div class="section-label">Portfólio</div>
+    <h2 class="section-title">Produtos pelos quais passei</h2>
+    <p class="section-sub">Do zero ao ar — produtos que construí, lançei e evoluí.</p>
 
-    <!-- MAIN COLUMN -->
-    <main>
-
-      <section>
-        <div class="section-label">Sobre</div>
-        <div class="about-text">
-          <p>Nos últimos 6 anos, construí produtos digitais do zero em e-commerce, programas de fidelidade, plataformas
-            de chatbot e jornadas de autosserviço. Minha atuação combina product discovery detalhados, decisões
-            orientadas
-            por dados e colaboração cross-functional com times de UX, Engenharia e Ciência de Dados.</p>
-          <ul class="highlight-list">
-            <li><span class="arrow">→</span> Experiência prática com IA generativa aplicada a produtos reais em produção
-            </li>
-            <li><span class="arrow">→</span> Capacidade de traduzir complexidade técnica em valor tangível para o
-              negócio</li>
-            <li><span class="arrow">→</span> Fluência nativa em inglês e vivência internacional</li>
-            <li><span class="arrow">→</span> Temas que me movem: IA conversacional, automação inteligente e empreendedorismo
-            </li>
-          </ul>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-company">Itaú Unibanco</div>
+        <div class="product-name">IA Conversacional — Atendimento Digital</div>
+        <div class="product-desc">Modernização das jornadas de atendimento do maior banco digital do Brasil, migrando
+          fluxos roteirizados para experiências de IA conversacional com foco em naturalidade e resolução eficiente.
         </div>
-      </section>
+        <div class="product-tags">
+          <span class="tag">IA Generativa</span>
+          <span class="tag">Conversacional</span>
+          <span class="tag">Discovery</span>
+          <span class="tag">LLM</span>
+        </div>
+      </div>
 
-      <section>
-        <div class="section-label">Experiência</div>
+      <div class="product-card">
+        <div class="product-company">Itaú Unibanco</div>
+        <div class="product-name">Plataforma de Chatbots</div>
+        <div class="product-desc">Plataforma de criação e gestão de chatbots para atendimento digital com IA generativa.
+          Defini a visão de produto, roadmap estratégico e KPIs, gerando escala sustentável e redução de custos
+          operacionais.</div>
+        <div class="product-tags">
+          <span class="tag">Plataforma</span>
+          <span class="tag">Chatbot</span>
+          <span class="tag">OKRs</span>
+          <span class="tag">Stakeholders</span>
+        </div>
+      </div>
 
-        <div class="job">
-          <div class="job-header">
-            <div class="job-company">Itaú Unibanco</div>
-            <div class="job-title">Senior AI Product Manager</div>
-            <div class="job-period">nov 2025 – presente · São Paulo</div>
+      <div class="product-card">
+        <div class="product-company">VR</div>
+        <div class="product-name">Programa de Fidelidade & Pontos PJ</div>
+        <div class="product-desc">Programa de pontos e fidelidade para clientes PJ. Estruturei mecânicas de acúmulo e
+          resgate, equilibrando atratividade para o cliente com sustentabilidade financeira do programa.</div>
+        <div class="product-tags">
+          <span class="tag">Fidelidade</span>
+          <span class="tag">B2B</span>
+          <span class="tag">Roadmap</span>
+          <span class="tag">UX</span>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-company">Fortify Transformation</div>
+        <div class="product-name">E-commerce & Marketplace</div>
+        <div class="product-desc">Estruturação e evolução de produtos digitais do zero — e-commerce, marketplace e
+          chatbot de atendimento. Conduzi growth hacking e análise de métricas de conversão e engajamento.</div>
+        <div class="product-tags">
+          <span class="tag">E-commerce</span>
+          <span class="tag">Marketplace</span>
+          <span class="tag">Growth</span>
+          <span class="tag">A/B Testing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASES -->
+  <div style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="section" id="cases">
+      <div class="section-label">Resultados</div>
+      <h2 class="section-title">Cases de Carreira</h2>
+      <p class="section-sub">Problemas reais resolvidos com processo, dados e colaboração.</p>
+
+      <div class="cases-list">
+        <div class="case-card">
+          <div class="case-metric">↑ Auto</div>
+          <div class="case-content">
+            <div class="case-company">Itaú Unibanco · IA Conversacional</div>
+            <div class="case-title">Aumento da taxa de resolução automática</div>
+            <div class="case-desc">Migração de fluxos roteirizados para IA conversacional, elevando a taxa de resolução
+              sem intervenção humana e reduzindo o esforço do cliente nas jornadas de atendimento digital.</div>
           </div>
-          <ul class="job-desc">
-            <li>Responsável pela modernização das jornadas de atendimento digital, liderando a migração de fluxos roteirizados para experiências de IA conversacional, com foco em naturalidade, contexto e resolução eficiente.</li>
-            <li>Defino e conduzo a estratégia de produto para jornadas conversacionais, priorizando casos de uso de alto impacto para o cliente e para o negócio.</li>
-            <li>Atuo fortemente em product discovery, identificando oportunidades de automação inteligente, redução de fricção e melhoria da experiência do usuário.</li>
-            <li>Trabalho de forma cross-functional com UX, Engenharia, Dados e IA, cocriando soluções que aumentam a taxa de resolução automática, reduzem o esforço do cliente e elevam a qualidade do atendimento digital.</li>
-            <li>Priorizo backlog com base em valor de negócio, impacto na jornada do cliente e viabilidade técnica, orientando decisões por dados e aprendizado contínuo.</li>
-            <li>Monitoro métricas de performance de jornada — resolução, satisfação, eficiência e adoção — promovendo ciclos constantes de melhoria.</li>
-          </ul>
         </div>
 
-        <div class="job">
-          <div class="job-header">
-            <div class="job-company">Itaú Unibanco</div>
-            <div class="job-title">Senior Product Manager — Plataforma de Chatbots</div>
-            <div class="job-period">out 2024 – nov 2025 · São Paulo</div>
+        <div class="case-card">
+          <div class="case-metric">↓ TMA</div>
+          <div class="case-content">
+            <div class="case-company">Itaú Unibanco · Plataforma de Chatbots</div>
+            <div class="case-title">Redução do tempo médio de atendimento</div>
+            <div class="case-desc">Liderança de discovery e delivery cross-functional com UX, Engenharia e Dados.
+              Soluções priorizadas por impacto financeiro e valor ao usuário, acelerando entregas críticas para o
+              negócio.</div>
           </div>
-          <ul class="job-desc">
-            <li>Liderei a estratégia e governança de uma plataforma de criação e gestão de chatbots para atendimento digital com IA generativa, resultando em aumento de eficiência operacional e escala sustentável.</li>
-            <li>Defini visão de produto, roadmap estratégico e KPIs, alinhando objetivos corporativos à melhoria da experiência do usuário e contribuindo para redução de custos operacionais.</li>
-            <li>Atuei de forma cross-functional com UX, Engenharia e Dados, liderando discovery e delivery de soluções que reduziram o tempo médio de atendimento e aumentaram a taxa de resolução automática.</li>
-            <li>Gerenciei stakeholders executivos e técnicos, priorizando backlog com base em impacto financeiro, valor para o usuário e viabilidade técnica, acelerando entregas críticas para o negócio.</li>
-            <li>Implementei decisões orientadas a dados, acompanhando métricas de adoção, performance e eficiência, promovendo evolução contínua da plataforma.</li>
-          </ul>
         </div>
 
-        <div class="job">
-          <div class="job-header">
-            <div class="job-company">VR</div>
-            <div class="job-title">Senior Product Manager — Fidelidade & Pontos PJ</div>
-            <div class="job-period">mai 2023 – out 2024 · Brasil</div>
+        <div class="case-card">
+          <div class="case-metric">↓ Churn </div>
+          <div class="case-content">
+            <div class="case-company">VR · Fidelidade PJ</div>
+            <div class="case-title">Redução de retrabalho e aumento da velocidade do time</div>
+            <div class="case-desc">Definição de user stories claras, critérios de aceite e story mapping que reduziram
+              ambiguidades de escopo e aumentaram a previsibilidade das entregas, acelerando o time-to-market.</div>
           </div>
-          <ul class="job-desc">
-            <li>Liderou OKRs, discovery e validação de funcionalidades de um programa de pontos e fidelidade para clientes PJ, garantindo aderência às necessidades reais de empresas, parceiros e times comerciais.</li>
-            <li>Estruturou e evoluiu mecânicas de acúmulo, resgate e regras de negócio, equilibrando atratividade para o cliente, viabilidade operacional e sustentabilidade financeira do programa.</li>
-            <li>Reduziu retrabalho e ambiguidades de escopo por meio da definição de user stories claras, critérios de aceite e story mapping, aumentando a previsibilidade das entregas e a velocidade do time.</li>
-            <li>Otimizou processos e fluxos internos da squad, melhorando a eficiência operacional, reduzindo tempo de ciclo e acelerando o time-to-market de novas features.</li>
-            <li>Gerenciou backlog e stakeholders de negócio (comercial, marketing, operações e parceiros), garantindo alinhamento estratégico e clareza de prioridades.</li>
-            <li>Atuou em parceria direta com UX e Engenharia, acelerando prototipagem e testes de usabilidade, elevando a adesão ao programa e melhorando a experiência do usuário PJ.</li>
-          </ul>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <div class="job">
-          <div class="job-header">
-            <div class="job-company">VR</div>
-            <div class="job-title">Senior Product Analyst</div>
-            <div class="job-period">mai 2022 – mai 2023 · São Paulo</div>
-          </div>
-          <ul class="job-desc">
-            <li>Implementei processos e fluxos internos, tornando o backlog e as demandas mais claros e previsíveis para a squad.</li>
-            <li>Estruturei user stories, critérios de aceite e regras de negócio, permitindo que Engenharia e UX trabalhassem de forma mais eficiente e reduzindo retrabalho.</li>
-            <li>Organizei e mantive o backlog operacional, garantindo que todas as tarefas fossem acompanhadas, priorizadas e executadas dentro dos prazos.</li>
-            <li>Acompanhei entregas e validações de funcionalidades, registrando problemas, inconsistências e oportunidades de melhoria no produto.</li>
-            <li>Apoiei UX e Engenharia em prototipagem, testes e ajustes, garantindo que o produto funcionasse corretamente e estivesse alinhado às necessidades dos clientes PJ.</li>
-          </ul>
-        </div>
+  <!-- DEPOIMENTOS -->
+  <div class="section" id="depoimentos">
+    <div class="section-label">Recomendações</div>
+    <h2 class="section-title">o que dizem de mim?</h2>
+    <p class="section-sub">Recomendações de colegas com quem tive o prazer de trabalhar.</p>
 
-        <div class="job">
-          <div class="job-header">
-            <div class="job-company">Wellcome App</div>
-            <div class="job-title">Product Manager</div>
-            <div class="job-period">dez 2021 – ago 2022 · Brasil</div>
-          </div>
-          <ul class="job-desc">
-            <li>Conduzi pesquisas de mercado, testes A/B e análises de jornada do usuário, aplicando insights para aumentar engajamento e melhorar a experiência do cliente.</li>
-            <li>Validei hipóteses de produto e priorizei backlog, garantindo que o time focasse em iniciativas de maior valor e impacto estratégico.</li>
-            <li>Atuei em lançamentos e estratégias de inbound marketing, implementando ações que contribuíram para crescimento orgânico e aquisição de novos usuários.</li>
-            <li>Defini OKRs e métricas de produto focadas em escalabilidade e retenção de usuários, monitorando resultados e ajustando iniciativas para maximizar impacto.</li>
-          </ul>
-        </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-text">"Guilherme tem uma capacidade rara de traduzir complexidade técnica em decisões de
+          produto claras. Trabalhar com ele acelerou muito nossa entrega."</div>
+        <div class="testimonial-author">— Em breve</div>
+        <div class="testimonial-role">Adicione recomendações do LinkedIn aqui</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-text">"O nível de clareza que ele traz para o backlog transformou a forma como o time
+          trabalha. Discovery bem feito, delivery previsível."</div>
+        <div class="testimonial-author">— Em breve</div>
+        <div class="testimonial-role">Adicione recomendações do LinkedIn aqui</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-text">"Referência em IA conversacional aplicada a produto. Combina visão estratégica com
+          execução consistente — algo difícil de encontrar."</div>
+        <div class="testimonial-author">— Em breve</div>
+        <div class="testimonial-role">Adicione recomendações do LinkedIn aqui</div>
+      </div>
+    </div>
+  </div>
 
-        <div class="job">
-          <div class="job-header">
-            <div class="job-company">Fortify Transformation</div>
-            <div class="job-title">Product Manager E-commerce</div>
-            <div class="job-period">mar 2020 – dez 2021 · São Paulo</div>
-          </div>
-          <ul class="job-desc">
-            <li>Estruturou e acompanhou a evolução de produtos digitais (e-commerce, marketplace e chatbot), implementando processos e fluxos que permitiram lançamentos consistentes do zero.</li>
-            <li>Executou ações de aquisição e growth hacking, testando canais e campanhas que ampliaram a base de clientes e engajamento.</li>
-            <li>Coletou e analisou métricas de performance, monitorando KPIs de uso, conversão e engajamento, apoiando decisões baseadas em dados reais.</li>
-            <li>Conduziu pesquisas de mercado e entrevistas com clientes, identificando pontos de atrito e oportunidades de melhoria, resultando em experiências mais intuitivas e eficientes.</li>
-            <li>Colaborou diretamente com UX, Engenharia e Marketing, implementando melhorias rápidas e testes contínuos que aumentaram a satisfação do usuário e a eficiência operacional.</li>
-          </ul>
-        </div>
+  <!-- ARSENAL -->
+  <div style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="section" id="arsenal">
+      <div class="section-label">Habilidades</div>
+      <h2 class="section-title">Meu Arsenal</h2>
+      <p class="section-sub">Tiro de ferramentas que uso para gerar resultado.</p>
 
-        <div class="job">
-          <div class="job-header">
-            <div class="job-company">Fortify Transformation</div>
-            <div class="job-title">Coordenador de Experiência do Cliente</div>
-            <div class="job-period">set 2019 – mar 2020 · São Paulo</div>
-          </div>
-          <ul class="job-desc">
-            <li>Estruturou e criou processos operacionais e métodos para pós-venda e customer success, garantindo eficiência operacional e maior satisfação do cliente.</li>
-            <li>Manteve relacionamento direto com clientes, incluindo contatos e visitas para avaliação da qualidade dos serviços, promovendo atendimento personalizado e proativo.</li>
-            <li>Acompanhou reclamações, dúvidas e feedbacks, identificando problemas recorrentes e implementando ações de melhoria contínua.</li>
-            <li>Desenvolveu métricas de satisfação do cliente e criou guias e interfaces nos canais de atendimento e FAQ, aumentando a autonomia do cliente e reduzindo demandas repetitivas.</li>
-            <li>Implementou atendimento automatizado via chatbot, otimizando tempo de resposta e eficiência do suporte.</li>
-          </ul>
-        </div>
-
-      </section>
-
-    </main>
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-
-      <section>
-        <div class="section-label">Skills</div>
-        <div class="sidebar-card">
-          <div class="tag-group">
+      <div class="arsenal-grid">
+        <div class="arsenal-card">
+          <div class="arsenal-icon">🎯</div>
+          <div class="arsenal-title">Estratégia</div>
+          <div class="arsenal-desc">Visão de produto, roadmap e priorização orientada a impacto.</div>
+          <div class="arsenal-tags">
             <span class="tag">Product Discovery</span>
-            <span class="tag">IA Generativa</span>
-            <span class="tag">Data-Driven</span>
             <span class="tag">OKRs</span>
             <span class="tag">Roadmap</span>
+            <span class="tag">PRD</span>
+            <span class="tag">Visão de Produto</span>
+          </div>
+        </div>
+
+        <div class="arsenal-card">
+          <div class="arsenal-icon">⚙️</div>
+          <div class="arsenal-title">Execução</div>
+          <div class="arsenal-desc">Da descoberta ao delivery com previsibilidade e qualidade.</div>
+          <div class="arsenal-tags">
             <span class="tag">Backlog</span>
             <span class="tag">User Stories</span>
-            <span class="tag">A/B Testing</span>
+            <span class="tag">Story Mapping</span>
             <span class="tag">Scrum</span>
             <span class="tag">Kanban</span>
-            <span class="tag">Stakeholder Mgmt</span>
-            <span class="tag">Claude Code</span>
+          </div>
+        </div>
+
+        <div class="arsenal-card">
+          <div class="arsenal-icon">📊</div>
+          <div class="arsenal-title">Dados & Técnico</div>
+          <div class="arsenal-desc">Decisões orientadas por dados, com fluência em IA e automação.</div>
+          <div class="arsenal-tags">
+            <span class="tag">Data-Driven</span>
+            <span class="tag">A/B Testing</span>
+            <span class="tag">IA Generativa</span>
+            <span class="tag">LLM</span>
             <span class="tag">Chatbot</span>
-            <span class="tag">PRD</span>
-            <span class="tag">Growth Hacking</span>
-            <span class="tag">Story Mapping</span>
+            <span class="tag">Claude Code</span>
           </div>
         </div>
-      </section>
 
-      <section>
-        <div class="section-label">Formação</div>
-        <div class="sidebar-card">
-          <div class="edu-item">
-            <div class="edu-school">FIAP</div>
-            <div class="edu-course">Pós-graduação · IA para Negócios — Gestão Estratégica e Liderança · 2026</div>
-          </div>
-          <div class="edu-item">
-            <div class="edu-school">Canterbury Technical Institute</div>
-            <div class="edu-course">Bachelor's · Business Administration · 2012–2014</div>
-          </div>
-          <div class="edu-item">
-            <div class="edu-school">Impacta Tecnologia</div>
-            <div class="edu-course">Product Owner · 2024</div>
-          </div>
-          <div class="edu-item">
-            <div class="edu-school">Awari</div>
-            <div class="edu-course">Product Management · 2022</div>
+        <div class="arsenal-card">
+          <div class="arsenal-icon">🤝</div>
+          <div class="arsenal-title">Comunicação</div>
+          <div class="arsenal-desc">Stakeholders alinhados, times engajados, decisões claras.</div>
+          <div class="arsenal-tags">
+            <span class="tag">Stakeholder Mgmt</span>
+            <span class="tag">Cross-functional</span>
+            <span class="tag">UX Collaboration</span>
+            <span class="tag">Bilíngue EN/PT</span>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section>
-        <div class="section-label">Idiomas</div>
-        <div class="sidebar-card">
-          <div class="lang-item"><span>Português</span><span class="lang-level">Nativo</span></div>
-          <div class="lang-item"><span>English</span><span class="lang-level">Nativo / Bilíngue</span></div>
-          <div class="lang-item"><span>Espanhol</span><span class="lang-level">Intermediário</span></div>
+      <div class="arsenal-highlight">
+        <div class="arsenal-highlight-label">Como aplico isso na prática</div>
+        <div class="arsenal-highlight-title">IA conversacional no maior banco digital do Brasil</div>
+        <div class="arsenal-highlight-text">
+          No Itaú, lidero a migração de fluxos roteirizados de atendimento para experiências baseadas em LLMs. Isso
+          envolve product discovery profundo para identificar casos de uso de alto impacto, colaboração intensa com
+          times de Engenharia e Dados para garantir viabilidade técnica, e acompanhamento rigoroso de métricas como taxa
+          de resolução automática, satisfação e eficiência operacional — promovendo ciclos contínuos de aprendizado e
+          melhoria.
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
 
-      <section>
-        <div class="section-label">Certificações</div>
-        <div class="sidebar-card">
-          <div class="cert-item">Produtividade com IA Generativa</div>
-          <div class="cert-item">Intensivo de Product Management</div>
-          <div class="cert-item">Discover</div>
-          <div class="cert-item">Product Owner</div>
+  <!-- CONTEÚDOS -->
+  <div class="contents-section">
+    <div class="section" id="conteudos">
+      <div class="section-label">Recursos</div>
+      <h2 class="section-title">Conteúdos</h2>
+      <p class="section-sub">Materiais sobre produto, IA e carreira — em breve por aqui.</p>
+
+      <div class="contents-grid">
+        <div class="content-card">
+          <div class="content-icon">🤖</div>
+          <div class="content-title">IA aplicada a produto</div>
+          <div class="content-desc">Como aplicar LLMs e IA generativa em produtos reais — sem hype.</div>
         </div>
-      </section>
+        <div class="content-card">
+          <div class="content-icon">🗺️</div>
+          <div class="content-title">Frameworks de PM</div>
+          <div class="content-desc">Templates e frameworks que uso no dia a dia — discovery, roadmap e mais.</div>
+        </div>
+        <div class="content-card">
+          <div class="content-icon">🚀</div>
+          <div class="content-title">Carreira em produto</div>
+          <div class="content-desc">Reflexões sobre crescimento, transição e o mercado de produto no Brasil.</div>
+        </div>
+        <div class="content-card">
+          <div class="content-icon">💡</div>
+          <div class="content-title">Cases & aprendizados</div>
+          <div class="content-desc">Bastidores de produtos que construí — o que funcionou e o que não funcionou.</div>
+        </div>
+      </div>
 
-    </aside>
+      <div class="contents-cta">
+        <a href="https://www.linkedin.com/in/guilhermedeoliveira33" target="_blank" class="btn-primary">Acompanhe no
+          LinkedIn →</a>
+      </div>
+    </div>
+  </div>
 
+  <!-- SOBRE -->
+  <div class="section" id="sobre">
+    <div class="section-label">Quem sou</div>
+    <h2 class="section-title">Sobre Mim</h2>
+
+    <div class="sobre-grid">
+      <div class="sobre-photo">👨‍💻</div>
+      <div class="sobre-text">
+        <p>Comecei minha jornada em produto em 2019, na Fortify Transformation, estruturando operações de e-commerce do
+          zero. De lá pra cá, passei por startups e grandes corporações — sempre com foco em construir produtos que
+          resolvem problemas reais para pessoas reais.</p>
+        <p>Hoje sou Senior AI Product Manager no Itaú Unibanco, liderando a modernização das jornadas de atendimento
+          digital com IA conversacional. Acredito que o futuro do produto está na interseção entre inteligência
+          artificial e experiência humana.</p>
+        <p>Sou bilíngue nativo em português e inglês, o que me permite colaborar com times globais
+          e absorver referências internacionais de produto.</p>
+        <ul class="sobre-list">
+          <li><span class="arrow">→</span> IA conversacional e LLMs aplicados a atendimento digital</li>
+          <li><span class="arrow">→</span> Product discovery orientado a dados e impacto real</li>
+          <li><span class="arrow">→</span> Construindo produtos com Claude Code nas horas vagas</li>
+          <li><span class="arrow">→</span> Pós-graduando em IA para Negócios na FIAP (2026)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA FINAL -->
+  <div class="cta-final">
+    <h2>Vamos Conversar?</h2>
+    <p>Se você quer trocar ideias sobre produto, IA ou oportunidades — me chama.</p>
+    <div class="cta-btns">
+      <a href="https://www.linkedin.com/in/guilhermedeoliveira33" target="_blank" class="btn-linkedin">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+        </svg>
+        No LinkedIn
+      </a>
+      <a href="mailto:g.deoliveira333@gmail.com" class="btn-email">
+        ✉ Enviar e-mail
+      </a>
+      <a href="https://api.whatsapp.com/send/?phone=5511966451983" target="_blank" class="btn-whatsapp">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+        Falar no WhatsApp
+      </a>
+    </div>
   </div>
 
   <footer>
